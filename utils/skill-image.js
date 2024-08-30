@@ -6,8 +6,6 @@ import aws from '/public/svg/skills/aws.svg';
 import azure from '/public/svg/skills/azure.svg';
 import blender from '/public/svg/skills/blender.svg';
 import bootstrap from '/public/svg/skills/bootstrap.svg';
-import bulma from '/public/svg/skills/bulma.svg';
-import c from '/public/svg/skills/c.svg';
 import canva from '/public/svg/skills/canva.svg';
 import capacitorjs from '/public/svg/skills/capacitorjs.svg';
 import coffeescript from '/public/svg/skills/coffeescript.svg';
