@@ -8,5 +8,5 @@ export const personalData = {
   address: 'Multan',
   github: 'https://github.com/Tassawar-Abbas',
   linkedIn: 'https://www.linkedin.com/in/tassawar-abbas-565bb6191/',
-  resume: "https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00/view?usp=sharing"
+  resume: "/Tassawar-Resume.pdf"
 }
