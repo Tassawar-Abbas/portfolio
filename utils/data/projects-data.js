@@ -6,7 +6,7 @@ import travel from '/public/image/travel.jpg';
 export const projectsData = [
     {
         id: 1,
-        name: 'Tamadres Website',
+        name: 'Tamadres',
         description: "Worked on developing the front end for an e-commerce website, enhancing user experience with a clean and responsive design using HTML, CSS, and JavaScript. Created dynamic components and product galleries with jQuery and AJAX to provide seamless user interactions. Improved performance with lazy loading and image optimization techniques. Integrated secure payment gateways and implemented client-side validation for smooth checkout processes.",
         tools: ['React Js', 'MongoDB','Javascript','NextJS', 'Tailwind CSS','TypeScript'],
         role: 'Frontend Developer',
@@ -16,7 +16,7 @@ export const projectsData = [
     },
     {
         id: 2,
-        name: 'London Airport Cab Service Website',
+        name: 'London Airport Cab Service',
         description: 'Developed the front end for a transportation booking website using React.js, ensuring a user-friendly and responsive design. Built dynamic booking forms and real-time fare calculation modules with React components, jQuery, and AJAX to enhance user engagement. Optimized performance with techniques like code-splitting, lazy loading, and image compression. Integrated third-party APIs for secure booking and payment processing, and implemented client-side validation for a smooth and reliable booking experience.',
         tools: ['React Js','Bootstrap', 'Tailwind CSS', "Google Maps", "JavaScript", "TypeScript", "Express Js", "Mongodb"],
         role: 'Frontend Developer',
@@ -26,7 +26,7 @@ export const projectsData = [
     },
     {
         id: 3,
-        name: 'Great Britain Cars Spain Website',
+        name: 'Great Britain Cars Spain',
         description: 'Led front-end development for a car hire and airport transfer website using React.js, focusing on creating a modern, responsive design that adapts to various devices. Developed interactive features, including booking forms and dynamic fare calculations, leveraging React components, jQuery, and AJAX for smooth user interactions. Enhanced site performance through advanced techniques like code-splitting and lazy loading. Integrated secure payment gateways and third-party APIs for a streamlined booking process and implemented robust client-side validation to ensure reliability and ease of use.',
         tools: ['React Js','Bootstrap', 'Tailwind CSS', "Google Maps", "JavaScript", "TypeScript", "Express Js", "Mongodb"],
         code: '',
@@ -36,7 +36,7 @@ export const projectsData = [
     },
     {
         id: 4,
-        name: 'Partner Dashboard Management Website',
+        name: 'Partner Dashboard Management',
         description: "Served as a Senior MERN Stack Engineer for a partner management dashboard, building and optimizing a scalable, responsive web application using React.js for the front end and Node.js with Express for the back end. Designed and implemented dynamic components and real-time data visualization features with React and Redux, enhancing user engagement and productivity. Developed RESTful APIs and integrated them with MongoDB to manage and query large datasets efficiently. Focused on performance improvements through code-splitting, lazy loading, and server-side rendering (SSR). Ensured security and scalability by implementing JWT-based authentication, role-based access control, and robust error handling.",
         tools: ['React Js','Bootstrap', 'Tailwind CSS', 'Material UI', 'Redux', 'Sun Editor', "Calendar","JavaScript", "TypeScript", "Express Js", "Mongodb","AWS"],
         code: '',
