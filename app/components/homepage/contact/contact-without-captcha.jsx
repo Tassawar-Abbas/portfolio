@@ -22,6 +22,7 @@ function ContactWithoutCaptcha() {
 
   const handleSendMail = async (e) => {
     e.preventDefault();
+  
     if (!userInput.email || !userInput.message || !userInput.name) {
       setError({ ...error, required: true });
       return;
@@ -29,29 +30,24 @@ function ContactWithoutCaptcha() {
       return;
     } else {
       setError({ ...error, required: false });
-    };
-
-    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const options = { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY };
-
+    }
+  
     try {
-      const res = await emailjs.send(serviceID, templateID, userInput, options);
-      const teleRes = await axios.post(`${process.env.NEXT_PUBLIC_APP_URL}/api/contact`, userInput);
-
-      if (res.status === 200 || teleRes.status === 200) {
+      const response = await axios.post(`http://127.0.0.1:3000/api/contact`, userInput);
+  
+      if (response.status === 200) {
         toast.success('Message sent successfully!');
         setUserInput({
           name: '',
           email: '',
           message: '',
         });
-      };
+      }
     } catch (error) {
-      toast.error(error?.text || error);
-    };
+      toast.error(error.response?.data?.error || 'Error sending message');
+    }
   };
-
+  
   return (
     <div className="">
       <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
@@ -61,7 +57,7 @@ function ContactWithoutCaptcha() {
         <p className="text-sm text-[#d3d8e8]">
           {"If you have any questions or concerns, please don't hesitate to contact me. I am open to any work opportunities that align with my skills and interests."}
         </p>
-        <div className="mt-6 flex flex-col gap-4">
+        {/* <div className="mt-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-base">Your Name: </label>
             <input
@@ -122,7 +118,7 @@ function ContactWithoutCaptcha() {
               <TbMailForward className="mt-1" size={18} />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

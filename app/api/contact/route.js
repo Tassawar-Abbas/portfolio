@@ -1,37 +1,47 @@
-import axios from 'axios';
-import { NextResponse } from "next/server";
+// pages/api/sendEmail.js
 
-export async function POST(request) {
-  const payload = await request.json();
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chat_id = process.env.TELEGRAM_CHAT_ID;
+import nodemailer from 'nodemailer';
 
-  if (!token || !chat_id) {
-    return NextResponse.json({
-      success: false,
-    }, { status: 200 });
-  };
+export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins. Replace '*' with your frontend domain if you want to allow only specific origins.
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS'); // Allow specific methods
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow specific headers
 
-  try {
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-    const message = `New message from ${payload.name}\n\nEmail: ${payload.email}\n\nMessage:\n ${payload.message}\n\n`;
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
 
-    const res = await axios.post(url, {
-      text: message,
-      chat_id: process.env.TELEGRAM_CHAT_ID
+  if (req.method === 'POST') {
+    const { name, email, message } = req.body;
+
+    // Set up your email transport configuration
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.NEXT_PUBLIC_EMAIL_USERNAME, // Your Gmail address
+        pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD, // Your Gmail password or App password if 2FA is enabled
+      },
     });
 
-    if (res.data.ok) {
-      return NextResponse.json({
-        success: true,
-        message: "Message sent successfully!",
-      }, { status: 200 });
+    // Set up email options
+    const mailOptions = {
+      from: email, // Sender address
+      to: 'tas80066@gmail.com', // List of recipients
+      subject: `Contact Form Submission from ${name}`, // Subject line
+      text: message, // Plain text body
     };
-  } catch (error) {
-    console.log(error.response.data)
-    return NextResponse.json({
-      message: "Message sending failed!",
-      success: false,
-    }, { status: 500 });
+
+    try {
+      // Send email
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ message: 'Email sent successfully' });
+    } catch (error) {
+      res.status(500).json({ error: 'Error sending email' });
+    }
+  } else {
+    res.status(405).json({ message: 'Method not allowed' });
   }
-};
+}
